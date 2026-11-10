@@ -1,0 +1,25 @@
+<article>
+    <h3>
+        <a href="{% url 'place_detail' place.id %}">
+            {{ place.name }}
+        </a>
+    </h3>
+
+    <p>{{ place.description|truncatewords:15 }}</p>
+    <p>Type: {{ place.type }}</p>
+    <p>Location: {{ place.location|default:"Secret place👀" }}</p>
+
+    <p>
+        Rating:
+        {% for star in "12345" %}
+            {% if forloop.counter <= place.rating %}
+                ★
+            {% else %}
+                ☆
+            {% endif %}
+        {% endfor %}
+    </p>
+
+    <p>Reviewed: {{ place.date }}</p>
+    <hr>
+</article>

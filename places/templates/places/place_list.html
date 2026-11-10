@@ -1,0 +1,9 @@
+{% extends 'places/base.html' %}
+
+{% block content %}
+    <h2>My favorite places</h2>
+
+    {% for place in places %}
+        {% include 'places/place_preview.html' %}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'places/base.html' %}
+
+{% block content %}
+    <h2>{{ place.name }}</h2>
+
+    <p>Type: {{ place.type }}</p>
+    <p>Location: {{ place.location|default:"Secret place👀" }}</p>
+
+    <p>
+        Rating:
+        {% for star in "12345" %}
+            {% if forloop.counter <= place.rating %}
+                ★
+            {% else %}
+                ☆
+            {% endif %}
+        {% endfor %}
+    </p>
+
+    <p>Reviewed: {{ place.date }}</p>
+
+    <h3>My review</h3>
+    <p>{{ place.description|linebreaksbr }}</p>
+
+    <a href="{% url 'place_list' %}">Back to places</a>
+{% endblock %}
